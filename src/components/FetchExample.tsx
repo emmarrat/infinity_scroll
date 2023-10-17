@@ -1,7 +1,8 @@
 import React, {useEffect, useState} from "react";
 import {Product, ProductsResponse} from "../types";
-import {Card, CardContent, CircularProgress, Typography} from "@mui/material";
+import {CircularProgress} from "@mui/material";
 import useIntersectionObserver from "../hooks/useIntersectionObserver.ts";
+import ProductCard from "./ProductCard/ProductCard.tsx";
 
 const FetchExample = () => {
     const [products, setProducts] = React.useState<Product[]>([]);
@@ -38,19 +39,13 @@ const FetchExample = () => {
                     key={product.id}
                     ref={products.length - 1 === i ? lastProductRef : undefined}
                 >
-                    <Card
-                        sx={{minWidth: 275, mb: 1}}
-                    >
-                        <CardContent>
-                            <Typography variant="h5" component="div">
-                                {product.title}
-                            </Typography>
-
-                            <Typography variant="body2">
-                                {product.description}
-                            </Typography>
-                        </CardContent>
-                    </Card>
+                    <ProductCard
+                        title={product.title}
+                        description={product.description}
+                        category={product.category}
+                        price={product.price}
+                        image={product.images[0]}
+                    />
                 </div>
 
             ))}
