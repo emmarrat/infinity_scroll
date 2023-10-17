@@ -1,35 +1,29 @@
-import {Card, CardContent, CardHeader, CardMedia, Typography} from "@mui/material";
+import {Card, CardContent, CardMedia, Typography} from "@mui/material";
 import React from "react";
+import {Product} from "../../types";
 
 interface Props {
-    title: string;
-    category: string;
-    description: string;
-    price: number;
-    image: string;
+    product: Product
 }
 
-const ProductCard:React.FC<Props> = ({title, category, description, price, image}) => {
+const ProductCard: React.FC<Props> = ({product}) => {
     return (
-        <Card sx={{ maxWidth: 345, mb: 2 }}>
-            <CardHeader
-                title={title}
-                subheader={category}
-            />
-            <CardMedia
-                component="img"
-                height="194"
-                image={image}
-                alt={title}
-            />
-            <CardContent>
-                <Typography variant="body2" color="text.secondary">
-                    {description}
-                </Typography>
-                <Typography variant="subtitle2" color="text.secondary">
-                    {price} $ USD
-                </Typography>
-            </CardContent>
+        <Card sx={{width: '240px', height: '320px'}}>
+                <CardMedia
+                    width="220"
+                    component="img"
+                    height="200px"
+                    image={product.thumbnail}
+                    alt={product.title}
+                />
+                <CardContent>
+                    <Typography gutterBottom variant="body1" component="div" sx={{overflow: 'scroll'}}>
+                        {product.title}
+                    </Typography>
+                    <Typography variant="body2" color="text.secondary">
+                        {product.price} USD $
+                    </Typography>
+                </CardContent>
         </Card>
     );
 };

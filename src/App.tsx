@@ -1,12 +1,13 @@
 import './App.css'
-import FetchExample from "./components/FetchExample.tsx";
+import {Grid} from "@mui/material";
+import Products from "./pages/Products/Products.tsx";
 
 function App() {
 
     return (
-        <div>
-           <FetchExample/>
-        </div>
+        <Grid container justifyContent="center">
+           <Products/>
+        </Grid>
     )
 }
 
