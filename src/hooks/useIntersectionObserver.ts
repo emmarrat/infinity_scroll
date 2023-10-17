@@ -1,11 +1,11 @@
-import { DependencyList, useCallback, useRef } from "react";
+import {DependencyList, useCallback, useRef} from "react";
 
 export default function useIntersectionObserver<T extends HTMLElement>(
     callback: (node: T | null) => void,
     deps: DependencyList
 ) {
     const observer = useRef<IntersectionObserver | null>(null);
-    const ref = useCallback(
+    return useCallback(
         (node: T | null) => {
             if (deps.every(Boolean)) {
                 observer.current?.disconnect();
@@ -17,5 +17,4 @@ export default function useIntersectionObserver<T extends HTMLElement>(
         },
         [deps, callback]
     );
-    return ref;
 }
