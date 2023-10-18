@@ -52,7 +52,10 @@ const Products = () => {
             >
                 {products.map((product, i, products) => (
                     <Grid
-                        item xs={12}
+                        item
+                        container
+                        xs={12}
+                        justifyContent="center"
                         sm={6}
                         md={4}
                         key={product.id}
